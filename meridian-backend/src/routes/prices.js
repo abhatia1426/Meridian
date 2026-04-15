@@ -1,5 +1,5 @@
 import express from 'express'
-import { getPrices } from '../services/itadSevice.js'
+import { getPrices } from '../services/itadService.js'
 
 const router = express.Router()
 

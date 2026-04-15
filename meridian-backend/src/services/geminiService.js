@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getMoodAttributed = async (moodInput) => {
+export const getMoodAttributes = async (moodInput) => {
     const prompt = `
 You are an export video game cureator. A user described what they want as: 
 "${moodInput}"
@@ -27,7 +27,7 @@ avoidTags should be tags that would NOT match this moos.
         { contents: [{ parts: [{ text: prompt }] }] }
     )
 
-    const raw = res.data.candidates[0].conent.parts[0].text
+    const raw = res.data.candidates[0].content.parts[0].text
     const cleaned = raw.replace(/```json|```/g, '').trim()
     return JSON.parse(cleaned)
 }
