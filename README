@@ -1,0 +1,151 @@
+# Meridian
+
+A full-stack AI-powered video game discovery platform that recommends hidden gem games based on your mood, vibe, and budget.
+
+## What it does
+
+Describe how you're feeling in natural language — "something chill to wind down after work under $15" — and Meridian uses AI to find underrated games that match your vibe, with live price comparisons across storefronts.
+
+## Features
+
+- **Mood-based discovery** — Natural language input powered by Google Gemini AI
+- **Hidden gem filter** — Only surfaces games with under 500 ratings on RAWG
+- **Live price tracking** — Real-time deals from Steam, GOG, Epic and more via CheapShark
+- **AI curator notes** — Gemini explains why each game matches your mood
+- **Keyword chips** — Click tags like "chill", "story rich", "pixel art" to build your search
+- **User profiles** — Save and rate games, persistent across sessions
+- **Google OAuth** — Sign in with Google
+- **PWA** — Installable on mobile as a native-feeling app
+
+## Tech Stack
+
+### Frontend
+- React + Vite
+- Tailwind CSS
+- React Router
+
+### Backend
+- Node.js + Express
+- MongoDB + Mongoose
+- Passport.js (Google OAuth)
+
+### APIs
+- Google Gemini 1.5 Flash — AI mood parsing and game reasoning
+- RAWG — Game database and metadata
+- CheapShark — Live game prices across storefronts
+
+## Getting Started
+
+### Prerequisites
+- Node.js v18+
+- MongoDB running locally
+
+### Installation
+
+1. Clone the repo
+```bash
+git clone https://github.com/yourusername/meridian.git
+cd meridian
+```
+
+2. Set up the backend
+```bash
+cd meridian-backend
+npm install
+```
+
+3. Create `.env` in `meridian-backend/`:
+```
+PORT=3001
+CLIENT_URL=http://localhost:5173
+MONGO_URI=mongodb://localhost:27017/meridian
+SESSION_SECRET=your_session_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GEMINI_API_KEY=your_gemini_api_key
+RAWG_API_KEY=your_rawg_api_key
+```
+
+4. Set up the frontend
+```bash
+cd ../meridian-frontend
+npm install
+npx tailwindcss -i ./src/index.css -o ./src/output.css
+```
+
+5. Create `.env` in `meridian-frontend/`:
+```
+VITE_API_URL=http://localhost:3001
+```
+
+### Running the app
+
+Terminal 1 — Backend:
+```bash
+cd meridian-backend
+npm run dev
+```
+
+Terminal 2 — Frontend:
+```bash
+cd meridian-frontend
+npm run dev
+```
+
+Terminal 3 — Tailwind watcher:
+```bash
+cd meridian-frontend
+npx tailwindcss -i ./src/index.css -o ./src/output.css --watch
+```
+
+Open [http://localhost:5173](http://localhost:5173)
+
+## Project Structure
+
+```
+meridian/
+├── meridian-backend/
+│   ├── src/
+│   │   ├── routes/
+│   │   │   ├── auth.js
+│   │   │   ├── games.js
+│   │   │   └── prices.js
+│   │   ├── middleware/
+│   │   │   └── authMiddleware.js
+│   │   ├── models/
+│   │   │   └── User.js
+│   │   ├── services/
+│   │   │   ├── geminiService.js
+│   │   │   ├── rawgService.js
+│   │   │   └── itadService.js
+│   │   └── index.js
+│   └── .env
+└── meridian-frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── Navbar.jsx
+    │   │   ├── MoodInput.jsx
+    │   │   ├── GameCard.jsx
+    │   │   └── PriceTag.jsx
+    │   ├── pages/
+    │   │   ├── Home.jsx
+    │   │   ├── Results.jsx
+    │   │   └── Profile.jsx
+    │   ├── services/
+    │   │   └── api.js
+    │   └── App.jsx
+    └── .env
+```
+
+## API Keys
+
+| Key | Where to get it |
+|-----|----------------|
+| `GEMINI_API_KEY` | [aistudio.google.com](https://aistudio.google.com) |
+| `RAWG_API_KEY` | [rawg.io/apidocs](https://rawg.io/apidocs) |
+| `GOOGLE_CLIENT_ID` | [console.cloud.google.com](https://console.cloud.google.com) |
+| `GOOGLE_CLIENT_SECRET` | [console.cloud.google.com](https://console.cloud.google.com) |
+
+## Author
+
+Aadi Bhatia — [github.com/abhatia1426](https://github.com/abhatia1426)

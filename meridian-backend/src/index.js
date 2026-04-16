@@ -1,16 +1,14 @@
+import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
 import session from 'express-session';
 import passport from 'passport';
-import dotenv from 'dotenv';
 
 import authRoutes from './routes/auth.js';
 import gameRoutes from './routes/games.js';
 import priceRoutes from './routes/prices.js';
-
-dotenv.config();
 
 const app = express();
 
@@ -35,5 +33,5 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err=> console.error(err))
 
 app.listen(process.env.PORT || 3001, () => {
-    console.log('Server running on port ${process.env.PORT || 3001}');
+    console.log(`Server running on port ${process.env.PORT || 3001}`);
 })
